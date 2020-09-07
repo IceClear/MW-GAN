@@ -21,7 +21,7 @@ Compressed video (QP=42)      |  Ours
 :-------------------------:|:-------------------------:
 ![](https://github.com/IceClear/MW-GAN/blob/master/figure/blow-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/blob/master/figure/blow-our.gif) 
 
-If you find our paper, database or code useful for your research, please cite:
+If you find our paper or code useful for your research, please cite:
 ```
 @InProceedings{Wang_2020_ECCV,
 author = {Jianyi Wang, Xin Deng, Mai Xu, Congyong Chen, Yuhang Song},
