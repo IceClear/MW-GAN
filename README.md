@@ -12,12 +12,13 @@ The code will be coming soon.
 Published on [**16TH EUROPEAN CONFERENCE ON COMPUTER VISION**](https://eccv2020.eu/) in 2020.
 By [MC2 Lab](http://buaamc2.net/) @ [Beihang University](http://ev.buaa.edu.cn/).
 
-## Visual results
+## Visual results on JCT-VC
 
-![](https://github.com/IceClear/MW-GAN/tree/master/figure/basketball-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/tree/master/figure/basketball-our.gif) 
+Compressed video (QP=42)      |  Ours
 :-------------------------:|:-------------------------:
-![](https://github.com/IceClear/MW-GAN/tree/master/figure/blow-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/tree/master/figure/blow-our.gif) 
+![](https://github.com/IceClear/MW-GAN/blob/master/figure/basketball-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/blob/master/figure/basketball-our.gif) 
 :-------------------------:|:-------------------------:
+![](https://github.com/IceClear/MW-GAN/blob/master/figure/blow-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/blob/master/figure/blow-our.gif) 
 
 If you find our paper, database or code useful for your research, please cite:
 ```
