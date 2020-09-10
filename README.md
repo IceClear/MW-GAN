@@ -1,6 +1,6 @@
 # MW-GAN
 This repo is the official code for MW-GAN: Multi-level Wavelet-based Generative Adversarial Network for Perceptual Quality Enhancement of Compressed Video.
-We have made some significant improvement in this repo.
+We have made some significant improvements in this repo.
 The code will be coming soon.
 
 * [**Multi-level Wavelet-based Generative Adversarial Network for Perceptual Quality Enhancement of Compressed Video.**](https://arxiv.org/abs/2008.00499)
@@ -27,7 +27,7 @@ If you find our paper or code useful for your research, please cite:
 author = {Jianyi Wang, Xin Deng, Mai Xu, Congyong Chen, Yuhang Song},
 title = {Multi-level Wavelet-based Generative Adversarial Network for Perceptual Quality Enhancement of Compressed Video},
 booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
-month = {September},
+month = {August},
 year = {2020}
 }
 ```
