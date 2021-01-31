@@ -31,7 +31,7 @@ Following [BasicSR](https://github.com/xinntao/BasicSR), we use datasets in LDMB
 - First run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/codes/data/data_process.py) to extract frames from videos.
 - Then run [extract_subimgs_single.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/extract_subimgs_single.py) to cut frames into small pieces for training.
 - Finally run [create_lmdb_one.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/create_lmdb_one.py) to generate lmdb for training.
-- Run [create_lmdb_test.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/create_lmdb_test.py) to generate lmdb for test (You need to first run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/codes/data/data_process.py) to obtain test frames from videos).
+- Run [create_lmdb_test.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/create_lmdb_test.py) to generate lmdb for testing (You need to first run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/codes/data/data_process.py) to obtain test frames from videos).
 
 ## Get Started
 - Run `python train.py -opt options/train/train_MWGAN_rgb.yml` for training.
