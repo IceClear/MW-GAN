@@ -27,7 +27,7 @@ Compressed video (QP=42)      |  Ours
 - See [requirements.txt](https://github.com/IceClear/MW-GAN/blob/master/metrics/requirements.txt) for other dependencies. You can just run: `pip install -r requirements.txt`.
 
 ## Dataset Preparation
-Following [BasicSR](https://github.com/xinntao/BasicSR), we use datasets in LDMB format for faster IO speed.
+Following [BasicSR](https://github.com/xinntao/BasicSR), we use datasets in LMDB format for faster IO speed.
 - First run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/codes/data/data_process.py) to extract frames from videos.
 - Then run [extract_subimgs_single.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/extract_subimgs_single.py) to cut frames into small pieces for training.
 - Finally run [create_lmdb_one.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/create_lmdb_one.py) to generate lmdb for training.
