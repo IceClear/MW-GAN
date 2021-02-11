@@ -19,8 +19,6 @@ Compressed video (QP=42)      |  Ours
 :-------------------------:|:-------------------------:
 ![](https://github.com/IceClear/MW-GAN/blob/master/figure/racehorse-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/blob/master/figure/racehorse-our.gif)
 
-**The code will be released in two months.**
-
 ## Dependencies and Installation
 - Python 3 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux)).
 - [0.4.0 <= PyTorch <= 1.1.0](https://pytorch.org/).
