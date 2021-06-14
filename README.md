@@ -21,7 +21,7 @@ Compressed video (QP=42)      |  Ours
 
 ## Dependencies and Installation
 - Python 3 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux)).
-- [0.4.0 <= PyTorch <= 1.1.0](https://pytorch.org/).
+- [PyTorch >= 0.4.0](https://pytorch.org/) (The original code is tested below pytorch=1.1.0 before [pac.py](https://github.com/IceClear/MW-GAN/blob/master/codes/models/modules/pac.py) was changed).
 - See [requirements.txt](https://github.com/IceClear/MW-GAN/blob/master/metrics/requirements.txt) for other dependencies. You can just run: 
 
 `conda install pytorch==1.1.0 torchvision==0.3.0 cudatoolkit=10.1`
