@@ -40,7 +40,7 @@ mujoco-py==1.50.1.59
 networkx==2.4
 numpy==1.18.2
 oauthlib==3.1.0
-opencv-python==3.4.3.18
+opencv-python==4.2.0.32
 opt-einsum==3.2.0
 parso==0.7.1
 pexpect==4.8.0
