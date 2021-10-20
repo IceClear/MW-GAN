@@ -1,4 +1,6 @@
-# MW-GAN+
+# Depreciated
+**This branch is depreciated and will be replaced in the recent future by a newly repo with latest settings and refined network.**
+
 This repo is the official code for [*MW-GAN+ for Perceptual Quality Enhancement on Compressed Video (In submission)*](), the improved version of our conference paper:
 
 * [**Multi-level Wavelet-based Generative Adversarial Network for Perceptual Quality Enhancement of Compressed Video.**](https://link.springer.com/chapter/10.1007/978-3-030-58568-6_24)
