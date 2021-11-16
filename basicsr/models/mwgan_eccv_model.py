@@ -207,9 +207,9 @@ class MWGANModel_ECCV(SRGANModel):
         if with_metrics:
             self.metric_results = {metric: 0 for metric in self.opt['val']['metrics'].keys()}
         pbar = tqdm(total=len(dataloader), unit='image')
-
+        dpsnr_dic = {}
         for idx, val_data in enumerate(dataloader):
-            # img_name = os.path.splitext(os.path.basename(val_data['lq_path'][0]))[0]
+            # img_name = osp.splitext(osp.basename(val_data['lq_path'][0]))[0]
             img_name = val_data['folder'][0]
             start_time = time.time()
             if val_data['lq'].size()[-1] > 1280:
@@ -226,40 +226,24 @@ class MWGANModel_ECCV(SRGANModel):
                         self.test()
                         visuals = self.get_current_visuals()
                         fake_list.append(visuals['result'])
-                enhanced_frame_h1 = torch.cat([fake_list[0],fake_list[2]],3)
-                enhanced_frame_h2 = torch.cat([fake_list[1],fake_list[3]],3)
-                sr_tensor = torch.cat([enhanced_frame_h1,enhanced_frame_h2],4)
-                # sr_tensor = enhanced_frame_h1
+                enhanced_frame_h1 = torch.cat([fake_list[0],fake_list[2]],2)
+                enhanced_frame_h2 = torch.cat([fake_list[1],fake_list[3]],2)
+                sr_tensor = torch.cat([enhanced_frame_h1,enhanced_frame_h2],3)
             else:
                 self.feed_data(val_data)
                 self.test()
                 visuals = self.get_current_visuals()
                 sr_tensor = visuals['result']
 
-            if self.opt['is_train']:
-                sr_img = tensor2img([sr_tensor])
-                lq_img = tensor2img([val_data['lq']])
-                if 'gt' in visuals:
-                    gt_img = tensor2img([visuals['gt']])
-                    del self.gt
-            else:
-                sr_list = []
-                lq_list = []
-                for i in range(sr_tensor.size(1)):
-                    sr_img = tensor2img_fast(sr_tensor[:,i,:,:,:])
-                    lq_img = tensor2img_fast(val_data['lq'][:,i,:,:,:])
-                    sr_list.append(sr_img)
-                    lq_list.append(lq_img)
-                if 'gt' in visuals:
-                    gt_list = []
-                    for i in range(sr_tensor.size(1)):
-                        gt_img = tensor2img_fast(visuals['gt'][:,i,:,:,:])
-                        gt_list.append(gt_img)
-                    del self.gt
+            sr_img = tensor2img([sr_tensor])
+            lq_img = tensor2img([val_data['lq'][:, val_data['lq'].size(1)//2]])
+            if 'gt' in visuals:
+                gt_img = tensor2img([visuals['gt']])
+                del self.gt
 
             logger = get_root_logger()
             end_time = time.time()
-            logger.info(f'\t # {img_name}: {end_time-start_time:.4f}\n')
+            # logger.info(f'\t # {img_name}: {end_time-start_time:.4f}\n')
 
             # tentative for out of GPU memory
             del self.lq
@@ -268,27 +252,16 @@ class MWGANModel_ECCV(SRGANModel):
 
             if save_img:
                 if self.opt['is_train']:
-                    save_img_path = os.path.join(self.opt['path']['visualization'], img_name,
+                    save_img_path = osp.join(self.opt['path']['visualization'], img_name,
                                              f'{img_name}_{current_iter}.png')
-                    imwrite(sr_img, save_img_path)
                 else:
-                    for i in range(len(lq_list)):
-                        mkdirs(os.path.join(self.opt['path']['visualization'], dataset_name, img_name))
-                        save_img_path_sr = os.path.join(self.opt['path']['visualization'], dataset_name, img_name,
-                                                 f'{img_name}_{str(i)}.png')
-                        imwrite(sr_list[i], save_img_path_sr)
-
-                        if self.opt['val']['save_input']:
-                            mkdirs(os.path.join(self.opt['path']['visualization'], dataset_name, img_name, 'lq'))
-                            save_img_path_lq = os.path.join(self.opt['path']['visualization'], dataset_name, img_name, 'lq',
-                                                     f'{img_name}_{str(i)}.png')
-                            imwrite(lq_list[i], save_img_path_lq)
-
-                            mkdirs(os.path.join(self.opt['path']['visualization'], dataset_name, img_name, 'gt'))
-                            save_img_path_gt = os.path.join(self.opt['path']['visualization'], dataset_name, img_name, 'gt',
-                                                     f'{img_name}_{str(i)}.png')
-                            imwrite(gt_list[i], save_img_path_gt)
-
+                    if self.opt['val']['suffix']:
+                        save_img_path = osp.join(self.opt['path']['visualization'], dataset_name,
+                                                 f'{img_name}_{self.opt["val"]["suffix"]}.png')
+                    else:
+                        save_img_path = osp.join(self.opt['path']['visualization'], dataset_name,
+                                                 f'{img_name}_{self.opt["name"]}.png')
+                imwrite(sr_img, save_img_path)
 
             if with_metrics:
                 # calculate metrics
@@ -313,8 +286,14 @@ class MWGANModel_ECCV(SRGANModel):
                     else:
                         metric_data = dict(img1=sr_img, img2=gt_img)
                         self.metric_results[name] += calculate_metric(metric_data, opt_)
+
             if 'dpsnr' in self.metric_results:
-                logger.info(f'\t # {img_name}: {dpsnr:.4f}\n')
+                if img_name in dpsnr_dic:
+                    dpsnr_dic[img_name].append(dpsnr)
+                else:
+                    dpsnr_dic[img_name] = []
+                    dpsnr_dic[img_name].append(dpsnr)
+
             pbar.update(1)
             pbar.set_description(f'Test {img_name}')
         pbar.close()
@@ -324,6 +303,16 @@ class MWGANModel_ECCV(SRGANModel):
                 self.metric_results[metric] /= (idx + 1)
 
             self._log_validation_metric_values(current_iter, dataset_name, tb_logger)
+
+        if len(dpsnr_dic)>0:
+            mean_list = []
+            for key_name in dpsnr_dic:
+                cur_list = np.array(dpsnr_dic[key_name])
+                logger.info(f'\t # {key_name}: {np.mean(cur_list):.4f}\n')
+                mean_list.append(np.mean(cur_list))
+
+            mean_list = np.array(mean_list)
+            logger.info(f'\t # average: {np.mean(mean_list):.4f}\n')
 
 @MODEL_REGISTRY.register()
 class MWGANModel_ECCV_PSNR(SRModel):
