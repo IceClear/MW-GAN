@@ -1,0 +1,54 @@
+name: MWGAN+_Tradeoff
+model_type: MWGANModel
+scale: 1
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: YUV_42
+    type: YUVRecurrentTestDataset
+    dataroot_gt: /media/minglang/iceking1/YUV_GT_img_crop_test_new/
+    dataroot_lq: /home/minglang/dataset/test_part_42/
+    # dataroot_gt: /media/minglang/iceking1/YUV_GT_img_crop_test_new/
+    # dataroot_lq: /media/minglang/iceking1/YUV_img_crop_37_test_new/
+    cache_data: True
+    io_backend:
+      type: disk
+    num_frame: -1  # not needed
+    frame_limited: -1
+
+# network structures
+network_g:
+  type: DenseMWNet_Mini_PSNRbased
+  in_nc: 3
+  out_nc: 3
+  nf: 64
+  gc: 32
+  nb: 6
+  pretrained: ./experiments/pretrain_model/MWGAN_PSNR_model.pth
+
+# path
+path:
+  pretrain_network_g: ./experiments/pretrain_model/MWGAN_Tradeoff_model
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: true
+  save_input: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+    # lpips: # metric name, can be arbitrary
+    #   type: calculate_lpips
+    #   crop_border: 0
+    #   test_y_channel: false

@@ -1,11 +1,20 @@
-# Depreciated
-**This branch is depreciated and will be replaced in the recent future by a newly repo with latest settings and refined network.**
+# MW-GAN
 
-This repo is the official code for [*MW-GAN+ for Perceptual Quality Enhancement on Compressed Video (In submission)*](), the improved version of our conference paper:
+This repo is the official code for the following papers:
+
+* [**MW-GAN+ for Perceptual Quality Enhancement on Compressed Video.**]()
+[*Jianyi Wang*](https://iceclear.github.io/resume/2021/04/06/Resume.html),
+[*Mai Xu (Corresponding)*](http://shi.buaa.edu.cn/MaiXu/zh_CN/index.htm),
+[*Xin Deng*](http://shi.buaa.edu.cn/XinDeng/zh_CN/index/49459/list/index.htm),
+[*Liquan Shen*](https://scholar.google.com/citations?user=EUEEtlYAAAAJ&hl=zh-CN),
+[*Yuhang Song*](http://www.cs.ox.ac.uk/people/yuhang.song/).
+
+Published on [**IEEE Transactions on Circuits and Systems for Video Technology**](https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=76) in 2021.
+By [MC2 Lab](http://buaamc2.net/) @ [Beihang University](http://ev.buaa.edu.cn/).
 
 * [**Multi-level Wavelet-based Generative Adversarial Network for Perceptual Quality Enhancement of Compressed Video.**](https://link.springer.com/chapter/10.1007/978-3-030-58568-6_24)
-[*Jianyi Wang*](http://buaamc2.net/html/Members/jianyiwang.html),
-[*Xin Deng*](http://www.commsp.ee.ic.ac.uk/~xindeng/),
+[*Jianyi Wang*](https://iceclear.github.io/resume/2021/04/06/Resume.html),
+[*Xin Deng*](http://shi.buaa.edu.cn/XinDeng/zh_CN/index/49459/list/index.htm),
 [*Mai Xu*](http://shi.buaa.edu.cn/MaiXu/zh_CN/index.htm),
 [*Congyong Chen*](),
 [*Yuhang Song*](http://www.cs.ox.ac.uk/people/yuhang.song/).
@@ -22,33 +31,47 @@ Compressed video (QP=42)      |  Ours
 ![](https://github.com/IceClear/MW-GAN/blob/master/figure/racehorse-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/blob/master/figure/racehorse-our.gif)
 
 ## Dependencies and Installation
-- Python 3 (Recommend to use [Anaconda](https://www.anaconda.com/download/#linux)).
-- [PyTorch >= 0.4.0](https://pytorch.org/) (The original code is tested below pytorch=1.1.0 before [pac.py](https://github.com/IceClear/MW-GAN/blob/master/codes/models/modules/pac.py) was changed).
-- See [requirements.txt](https://github.com/IceClear/MW-GAN/blob/master/metrics/requirements.txt) for other dependencies. You can just run: 
-
-`conda install pytorch==1.1.0 torchvision==0.3.0 cudatoolkit=10.1`
-
-`python -m pip install pyyaml opencv-python tensorboard future scikit-image tqdm`
+- This repo is completely built based on [BasicSR](https://github.com/xinntao/BasicSR). You need to install follow [Install from a local clone](https://github.com/xinntao/BasicSR/blob/master/INSTALL.md)
 
 ## Dataset Preparation
-Following [BasicSR](https://github.com/xinntao/BasicSR), we use datasets in LMDB format for faster IO speed.
-- First run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/codes/data/data_process.py) to extract frames from videos.
-- Then run [extract_subimgs_single.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/extract_subimgs_single.py) to cut frames into small pieces.
-- Finally run [create_lmdb_one.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/create_lmdb_one.py) to generate lmdb for training.
-- Run [create_lmdb_test.py](https://github.com/IceClear/MW-GAN/blob/master/codes/scripts/create_lmdb_test.py) to generate lmdb for test (You need to first run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/codes/data/data_process.py) to obtain test frames from videos).
+Generally, we directly read cropped images from folders.
+- Run [data_process.py](https://github.com/IceClear/MW-GAN/blob/master/scripts/data_preparation/data_process.py) to extract frames from videos.
+- This repo should also support LMDB format for faster IO speed as [BasicSR](https://github.com/xinntao/BasicSR). Not tested yet.
 
 ## Get Started
-- Run `python train.py -opt options/train/train_MWGAN_rgb.yml` for training.
-- Run `python test.py -opt options/test/test_MWGAN_rgb.yml` for test.
+The same as [BasicSR](https://github.com/xinntao/BasicSR), you can see [here](https://github.com/xinntao/BasicSR/blob/master/docs/TrainTest.md) for details.
 
-## Tips
-- [train_MWGAN_yuv.yml](https://github.com/IceClear/MW-GAN/blob/master/codes/options/train/train_MWGAN_yuv.yml) and [test_MWGAN_yuv.yml](https://github.com/IceClear/MW-GAN/blob/master/codes/options/test/test_MWGAN_yuv.yml) are for YUV training and test. You can also use these files to reproduce [MW-GAN](https://link.springer.com/chapter/10.1007/978-3-030-58568-6_24) in our conference paper. You just need to change some settings and make some modifications in [DenseMWNet_arch](https://github.com/IceClear/MW-GAN/blob/master/codes/models/modules/DenseMWNet_arch.py).
+:star: *MWGAN+ Train:*
+
+- **MWGAN+ PSNR Model:** `CUDA_VISIBLE_DEVICES=0 python basicsr/train.py -opt options/train/MWGAN/train_MWGAN_PSNR.yml`
+- **MWGAN+ GAN Model:** `CUDA_VISIBLE_DEVICES=0 python basicsr/train.py -opt options/train/MWGAN/train_MWGAN_Percep.yml`
+- **Tradeoff Model:** `CUDA_VISIBLE_DEVICES=0 python basicsr/train.py -opt options/train/MWGAN/train_MWGAN_Tradeoff.yml`
+
+:star: *MWGAN Train:*
+
+- **MWGAN PSNR Model:** `CUDA_VISIBLE_DEVICES=0 python basicsr/train.py -opt options/train/MWGAN/train_MWGAN_ECCV_PSNR.yml`
+- **MWGAN GAN Model:** `CUDA_VISIBLE_DEVICES=0 python basicsr/train.py -opt options/train/MWGAN/train_MWGAN_ECCV_Percep.yml`
+
+:star: *Test:*
+
+- **Test example:** `CUDA_VISIBLE_DEVICES=0 python basicsr/test.py -opt options/test/MWGAN/test_MWGAN_Tradeoff.yml`
 
 ## Pre-train model
-Here we provide a [model](https://drive.google.com/file/d/1F2NxoH3ynYWdbvQBopy5K5M8hrlYkJBC/view?usp=sharing) trained for QP42. For other models you can just finetune on this model.
+Here the models we provide are trained on QP37 in RGB space.
+
+:star: *MWGAN+ Model:*
+
+- [MWGAN+ PSNR Model](https://drive.google.com/file/d/172drsGyZoRFZdSGOfvGsRg9ALTatrbaK/view?usp=sharing)
+- [MWGAN+ GAN Model]()
+- [Tradeoff Model](https://drive.google.com/file/d/19LMZI4HwwqEGrYyGoEtN9JMEAthkZZV_/view?usp=sharing)
+
+:star: *MWGAN Model:*
+
+- [MWGAN PSNR Model]()
+- [MWGAN GAN Model]()
 
 ## Acknowledgement
-This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR). Also borrowing codes from [pacnet](https://github.com/NVlabs/pacnet), [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch) and [PerceptualSimilarity](https://github.com/richzhang/PerceptualSimilarity). We thank a lot for their contributions to the community.
+This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR). Also borrowing codes from [pacnet](https://github.com/NVlabs/pacnet) and [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch). We thank a lot for their contributions to the community.
 
 ## Citation
 If you find our paper or code useful for your research, please cite:

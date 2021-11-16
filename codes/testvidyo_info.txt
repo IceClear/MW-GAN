@@ -1,6 +1,0 @@
-mad		352		288		900
-BarScene		2048		1080		420
-TunnelFlag		2048		1080		420
-vidyo1		1280		720		60
-vidyo3		1280		720		60
-vidyo4		1280		720		60
