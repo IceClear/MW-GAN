@@ -31,7 +31,11 @@ Compressed video (QP=42)      |  Ours
 ![](https://github.com/IceClear/MW-GAN/blob/master/figure/racehorse-lq.gif)  |  ![](https://github.com/IceClear/MW-GAN/blob/master/figure/racehorse-our.gif)
 
 ## Dependencies and Installation
-- This repo is completely built based on [BasicSR](https://github.com/xinntao/BasicSR). You need to install follow [Install from a local clone](https://github.com/xinntao/BasicSR/blob/master/INSTALL.md)
+- This repo is completely built based on [BasicSR](https://github.com/xinntao/BasicSR). You need to install following [Install from a local clone](https://github.com/xinntao/BasicSR/blob/master/INSTALL.md). Quick installation:
+
+`pip install -r requirements.txt`
+
+`BASICSR_EXT=True python setup.py develop`
 
 ## Dataset Preparation
 Generally, we directly read cropped images from folders.
