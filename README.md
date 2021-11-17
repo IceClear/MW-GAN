@@ -61,9 +61,9 @@ Here the models we provide are trained on QP37 in RGB space.
 
 :star: *MWGAN+ Model:*
 
-- [MWGAN+ PSNR Model](https://drive.google.com/file/d/172drsGyZoRFZdSGOfvGsRg9ALTatrbaK/view?usp=sharing)
-- [MWGAN+ GAN Model]() (In progress)
-- [Tradeoff Model](https://drive.google.com/file/d/19LMZI4HwwqEGrYyGoEtN9JMEAthkZZV_/view?usp=sharing)
+- [MWGAN+ PSNR Model](https://drive.google.com/file/d/172drsGyZoRFZdSGOfvGsRg9ALTatrbaK/view?usp=sharing): This is the model for MW-GAN+obj in the paper.
+- [MWGAN+ GAN Model](): This is the model for MW-GAN+ in the paper. (In progress)
+- [Tradeoff Model](https://drive.google.com/file/d/19LMZI4HwwqEGrYyGoEtN9JMEAthkZZV_/view?usp=sharing): For PD-tradeoff, instead of the ways introduced in our paper, we further developed an end-to-end model to achieve such a performance. Specifically, we first enhance the frames using the pre-trained PSNR-based model to remove compression artifacts, then using GAN to add high-frequency details. This two-stage enhancement is similar to the 'Two-stage Restoration' used in [EDVR](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Wang_EDVR_Video_Restoration_With_Enhanced_Deformable_Convolutional_Networks_CVPRW_2019_paper.pdf).
 
 :star: *MWGAN Model:*
 
