@@ -33,9 +33,13 @@ Compressed video (QP=42)      |  Ours
 ## Dependencies and Installation
 - This repo is completely built based on [BasicSR](https://github.com/xinntao/BasicSR). You need to install following [Install from a local clone](https://github.com/xinntao/BasicSR/blob/master/INSTALL.md). Quick installation:
 
-`pip install -r requirements.txt`
+```bash
+pip install -r requirements.txt
+```
 
-`BASICSR_EXT=True python setup.py develop`
+```bash
+BASICSR_EXT=True python setup.py develop
+```
 
 ## Dataset Preparation
 Generally, we directly read cropped images from folders.
