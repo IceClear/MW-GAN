@@ -61,7 +61,7 @@ network_d:
 
 # path
 path:
-  pretrain_network_g: ~
+  pretrain_network_g: ./experiments/pretrain_model/MWGAN_PSNR_ECCV_model.pth
   strict_load_g: true
   resume_state: ~
 

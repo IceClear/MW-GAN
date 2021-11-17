@@ -75,7 +75,7 @@ Here the models we provide are trained on QP37 in RGB space.
 
 :star: *MWGAN Model:*
 
-- [MWGAN PSNR Model]() (In progress)
+- [MWGAN PSNR Model](https://drive.google.com/u/0/uc?id=1lvki-CphYSVvnw576BkUzyX_dqJTN7g8&export=download)
 - [MWGAN GAN Model]() (In progress)
 
 ## Acknowledgement
@@ -95,8 +95,8 @@ If you find our paper or code useful for your research, please cite:
 
 @ARTICLE{wang2021mwgan,
   author={Wang, Jianyi and Xu, Mai and Deng, Xin and Shen, Liquan and Song, Yuhang},
-  journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
-  title={MW-GAN+ for Perceptual Quality Enhancement on Compressed Video}, 
+  journal={IEEE Transactions on Circuits and Systems for Video Technology},
+  title={MW-GAN+ for Perceptual Quality Enhancement on Compressed Video},
   year={2021},
   volume={},
   number={},
