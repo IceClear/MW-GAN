@@ -28,7 +28,7 @@ network_g:
 
 # path
 path:
-  pretrain_network_g: ./experiments/pretrain_model/MWGAN_ECCV_PSNR_model.pth
+  pretrain_network_g: ./experiments/pretrain_model/MWGAN_PSNR_ECCV_model.pth
   strict_load_g: True
 
 # validation settings

@@ -75,8 +75,8 @@ Here the models we provide are trained on QP37 in RGB space.
 
 :star: *MWGAN Model:*
 
-- [MWGAN PSNR Model](https://drive.google.com/u/0/uc?id=1lvki-CphYSVvnw576BkUzyX_dqJTN7g8&export=download)
-- [MWGAN GAN Model]() (In progress)
+- [MWGAN PSNR Model](https://drive.google.com/u/0/uc?id=1lvki-CphYSVvnw576BkUzyX_dqJTN7g8&export=download): Pretrained PSNR model to initialize generator for GAN training.
+- [MWGAN GAN Model](): The model for MW-GAN. (In progress)
 
 ## Acknowledgement
 This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR). Also borrowing codes from [pacnet](https://github.com/NVlabs/pacnet) and [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch). We thank a lot for their contributions to the community.
