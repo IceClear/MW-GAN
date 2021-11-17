@@ -2,7 +2,7 @@
 
 This repo is the official code for the following papers:
 
-* [**MW-GAN+ for Perceptual Quality Enhancement on Compressed Video.**]()
+* [**MW-GAN+ for Perceptual Quality Enhancement on Compressed Video.**](https://ieeexplore.ieee.org/document/9615054)
 [*Jianyi Wang*](https://iceclear.github.io/resume/2021/04/06/Resume.html),
 [*Mai Xu (Corresponding)*](http://shi.buaa.edu.cn/MaiXu/zh_CN/index.htm),
 [*Xin Deng*](http://shi.buaa.edu.cn/XinDeng/zh_CN/index/49459/list/index.htm),
@@ -62,13 +62,13 @@ Here the models we provide are trained on QP37 in RGB space.
 :star: *MWGAN+ Model:*
 
 - [MWGAN+ PSNR Model](https://drive.google.com/file/d/172drsGyZoRFZdSGOfvGsRg9ALTatrbaK/view?usp=sharing)
-- [MWGAN+ GAN Model]()
+- [MWGAN+ GAN Model]() (In progress)
 - [Tradeoff Model](https://drive.google.com/file/d/19LMZI4HwwqEGrYyGoEtN9JMEAthkZZV_/view?usp=sharing)
 
 :star: *MWGAN Model:*
 
-- [MWGAN PSNR Model]()
-- [MWGAN GAN Model]()
+- [MWGAN PSNR Model]() (In progress)
+- [MWGAN GAN Model]() (In progress)
 
 ## Acknowledgement
 This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR). Also borrowing codes from [pacnet](https://github.com/NVlabs/pacnet) and [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch). We thank a lot for their contributions to the community.
@@ -83,5 +83,16 @@ If you find our paper or code useful for your research, please cite:
   pages={405--421},
   year={2020},
   organization={Springer}
+}
+
+@ARTICLE{wang2021mwgan,
+  author={Wang, Jianyi and Xu, Mai and Deng, Xin and Shen, Liquan and Song, Yuhang},
+  journal={IEEE Transactions on Circuits and Systems for Video Technology}, 
+  title={MW-GAN+ for Perceptual Quality Enhancement on Compressed Video}, 
+  year={2021},
+  volume={},
+  number={},
+  pages={1-1},
+  doi={10.1109/TCSVT.2021.3128275}
 }
 ```
