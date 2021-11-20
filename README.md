@@ -70,13 +70,13 @@ Here the models we provide are trained on QP37 in RGB space.
 :star: *MWGAN+ Model:*
 
 - [MWGAN+ PSNR Model](https://drive.google.com/u/0/uc?id=172drsGyZoRFZdSGOfvGsRg9ALTatrbaK&export=download): This is the model for MW-GAN+obj in the paper.
-- [MWGAN+ GAN Model](): This is the model for MW-GAN+ in the paper. (In progress)
+- [MWGAN+ GAN Model](https://drive.google.com/u/0/uc?id=19mUAJ4mSEX8Zxcg_07tDBwQPaYjGDIth&export=download): This is the model for MW-GAN+ in the paper.
 - [Tradeoff Model](https://drive.google.com/u/0/uc?id=19LMZI4HwwqEGrYyGoEtN9JMEAthkZZV_&export=download): For PD-tradeoff, instead of the ways introduced in our paper, we further developed an end-to-end model to achieve such a performance. Specifically, we first enhance the frames using the pre-trained PSNR-based model to remove compression artifacts, then using GAN to add high-frequency details. This two-stage enhancement is similar to the 'Two-stage Restoration' used in [EDVR](https://openaccess.thecvf.com/content_CVPRW_2019/papers/NTIRE/Wang_EDVR_Video_Restoration_With_Enhanced_Deformable_Convolutional_Networks_CVPRW_2019_paper.pdf).
 
 :star: *MWGAN Model:*
 
 - [MWGAN PSNR Model](https://drive.google.com/u/0/uc?id=1lvki-CphYSVvnw576BkUzyX_dqJTN7g8&export=download): Pretrained PSNR model to initialize generator for GAN training.
-- [MWGAN GAN Model](): The model for MW-GAN. (In progress)
+- [MWGAN GAN Model](https://drive.google.com/u/0/uc?id=1TzXilyRm6uPs2u875CDofRVu3zY2iO8S&export=download): The model for MW-GAN.
 
 ## Acknowledgement
 This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR). Also borrowing codes from [pacnet](https://github.com/NVlabs/pacnet) and [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch). We thank a lot for their contributions to the community.

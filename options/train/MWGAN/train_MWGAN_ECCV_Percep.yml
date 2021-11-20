@@ -1,5 +1,5 @@
 # general settings
-name: MWGAN_ECCV_Percep
+name: MWGAN_ECCV_Percep_2
 model_type: MWGANModel_ECCV
 scale: 1
 num_gpu: 1  # set num_gpu: 0 for cpu mode
@@ -56,7 +56,7 @@ network_g:
 network_d:
   type: Discriminator_ECCV
   in_nc: 3
-  nf: 64
+  nf: 32
   n_scale: 3
 
 # path

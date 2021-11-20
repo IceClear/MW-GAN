@@ -211,6 +211,16 @@ class MWGANModel_ECCV(SRGANModel):
         for idx, val_data in enumerate(dataloader):
             # img_name = osp.splitext(osp.basename(val_data['lq_path'][0]))[0]
             img_name = val_data['folder'][0]
+
+            if idx == 0:
+                cur_name = img_name
+                last_name = cur_name
+                idx_begin = 0
+            else:
+                if last_name != cur_name:
+                    idx_begin = idx
+                    last_name = cur_name
+
             start_time = time.time()
             if val_data['lq'].size()[-1] > 1280:
                 width = val_data['lq'].size()[-1]
@@ -259,9 +269,11 @@ class MWGANModel_ECCV(SRGANModel):
                         save_img_path = osp.join(self.opt['path']['visualization'], dataset_name,
                                                  f'{img_name}_{self.opt["val"]["suffix"]}.png')
                     else:
-                        save_img_path = osp.join(self.opt['path']['visualization'], dataset_name,
-                                                 f'{img_name}_{self.opt["name"]}.png')
+                        save_img_path = osp.join(self.opt['path']['visualization'], dataset_name, img_name,
+                                                 f'{img_name}_{idx-idx_begin}.png')
                 imwrite(sr_img, save_img_path)
+
+            cur_name = img_name
 
             if with_metrics:
                 # calculate metrics
@@ -423,6 +435,16 @@ class MWGANModel_ECCV_PSNR(SRModel):
         for idx, val_data in enumerate(dataloader):
             # img_name = osp.splitext(osp.basename(val_data['lq_path'][0]))[0]
             img_name = val_data['folder'][0]
+
+            if idx == 0:
+                cur_name = img_name
+                last_name = cur_name
+                idx_begin = 0
+            else:
+                if last_name != cur_name:
+                    idx_begin = idx
+                    last_name = cur_name
+
             start_time = time.time()
             if val_data['lq'].size()[-1] > 1280:
                 width = val_data['lq'].size()[-1]
@@ -471,9 +493,11 @@ class MWGANModel_ECCV_PSNR(SRModel):
                         save_img_path = osp.join(self.opt['path']['visualization'], dataset_name,
                                                  f'{img_name}_{self.opt["val"]["suffix"]}.png')
                     else:
-                        save_img_path = osp.join(self.opt['path']['visualization'], dataset_name,
-                                                 f'{img_name}_{self.opt["name"]}.png')
+                        save_img_path = osp.join(self.opt['path']['visualization'], dataset_name, img_name,
+                                                 f'{img_name}_{idx-idx_begin}.png')
                 imwrite(sr_img, save_img_path)
+
+            cur_name = img_name
 
             if with_metrics:
                 # calculate metrics

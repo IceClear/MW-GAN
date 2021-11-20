@@ -19,7 +19,7 @@ datasets:
 
 # network structures
 network_g:
-  type: DenseMWNet_Mini
+  type: DenseMWNet_ECCV
   in_nc: 3
   out_nc: 3
   nf: 64
