@@ -65,7 +65,7 @@ The same as [BasicSR](https://github.com/xinntao/BasicSR), you can see [here](ht
 - **Test example:** `CUDA_VISIBLE_DEVICES=0 python basicsr/test.py -opt options/test/MWGAN/test_MWGAN_Tradeoff.yml`
 
 ## Pre-train model
-Here the models we provide are trained on QP37 in RGB space.
+Here the models we provide are trained on QP37 in RGB space. You can also refer to [Release](https://github.com/IceClear/MW-GAN/releases/tag/v1.0.0). 
 
 :star: *MWGAN+ Model:*
 
