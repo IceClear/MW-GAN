@@ -79,7 +79,7 @@ Here the models we provide are trained on QP37 in RGB space. You can also refer 
 - [MWGAN GAN Model](https://drive.google.com/u/0/uc?id=1TzXilyRm6uPs2u875CDofRVu3zY2iO8S&export=download): The model for MW-GAN.
 
 ## Acknowledgement
-This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR). Also borrowing codes from [pacnet](https://github.com/NVlabs/pacnet) and [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch). We thank a lot for their contributions to the community.
+This repo is built mainly based on [BasicSR](https://github.com/xinntao/BasicSR), and also borrow codes from [pacnet](https://github.com/NVlabs/pacnet) and [MWCNN_PyTorch](https://github.com/lpj0/MWCNN_PyTorch). We thank a lot for their contributions to the community.
 
 ## Citation
 If you find our paper or code useful for your research, please cite:
@@ -93,7 +93,7 @@ If you find our paper or code useful for your research, please cite:
   organization={Springer}
 }
 
-@ARTICLE{wang2021mwgan,
+@ARTICLE{wang2021mw,
   author={Wang, Jianyi and Xu, Mai and Deng, Xin and Shen, Liquan and Song, Yuhang},
   journal={IEEE Transactions on Circuits and Systems for Video Technology},
   title={MW-GAN+ for Perceptual Quality Enhancement on Compressed Video},
